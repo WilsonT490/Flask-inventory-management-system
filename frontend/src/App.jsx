@@ -8,11 +8,11 @@ import FetchProduct from "./components/FetchProduct";
 import Summary from "./components/Summary";
 
 const API = "http://127.0.0.1:5000";
-const [prefillItem, setPrefillItem] = useState(null);
 
 function App() {
   const [inventory, setInventory] = useState([]);
   const [editingItem, setEditingItem] = useState(null);
+  const [prefillItem, setPrefillItem] = useState(null);
 
   const loadInventory = async () => {
     try {
