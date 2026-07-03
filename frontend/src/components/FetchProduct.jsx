@@ -3,7 +3,7 @@ import axios from "axios";
 
 const API = "http://127.0.0.1:5000";
 
-function FetchProduct() {
+function FetchProduct({ onAddProduct }) {
 
   const [barcode, setBarcode] = useState("");
   const [product, setProduct] = useState(null);
@@ -43,15 +43,28 @@ function FetchProduct() {
 
       {product && (
 
-        <div className="product-card">
+     <div className="product-card">
 
-          <h3>{product.name}</h3>
+    <h3>{product.name}</h3>
 
-          <p><strong>Brand:</strong> {product.brand}</p>
+    <p><strong>Brand:</strong> {product.brand}</p>
 
-          <p><strong>Category:</strong> {product.category}</p>
+    <p><strong>Category:</strong> {product.category}</p>
 
-        </div>
+    <button
+        onClick={() =>
+            onAddProduct({
+                name: product.name,
+                barcode: product.barcode,
+                price: "",
+                quantity: ""
+            })
+        }
+    >
+        Add Product to Inventory
+    </button>
+
+    </div>  
 
       )}
 

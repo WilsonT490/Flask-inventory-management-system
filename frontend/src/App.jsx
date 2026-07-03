@@ -8,6 +8,7 @@ import FetchProduct from "./components/FetchProduct";
 import Summary from "./components/Summary";
 
 const API = "http://127.0.0.1:5000";
+const [prefillItem, setPrefillItem] = useState(null);
 
 function App() {
   const [inventory, setInventory] = useState([]);
@@ -49,10 +50,13 @@ function App() {
 
       <Summary items={inventory} />
 
-      <FetchProduct />
+      <FetchProduct onAddProduct={setPrefillItem} />
 
-      <AddItemForm addItem={addItem} />
-
+      <AddItemForm
+        addItem={addItem}
+        prefillItem={prefillItem}
+        clearPrefill={() => setPrefillItem(null)}
+      />
       <InventoryTable
         items={inventory}
         onDelete={deleteItem}

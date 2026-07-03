@@ -1,6 +1,12 @@
 import { useState } from "react";
 
-function AddItemForm({ addItem }) {
+import { useState, useEffect } from "react";
+
+function AddItemForm({
+    addItem,
+    prefillItem,
+    clearPrefill
+}) {
 
   const [form, setForm] = useState({
     name: "",
@@ -8,6 +14,18 @@ function AddItemForm({ addItem }) {
     price: "",
     quantity: ""
   });
+
+  useEffect(() => {
+
+    if (prefillItem) {
+
+        setForm(prefillItem);
+
+        clearPrefill();
+
+    }
+
+}, [prefillItem]);
 
   const handleSubmit = (e) => {
 
